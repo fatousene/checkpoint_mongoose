@@ -1,0 +1,16 @@
+{
+  "name": "checkpoint-mongoose",
+  "version": "1.0.0",
+  "description": "an application with mongodb atlas as database",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "fatou-sene",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.1.1",
+    "validator": "^13.7.0"
+  }
+}

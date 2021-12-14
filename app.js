@@ -26,15 +26,14 @@ person.save((err, data) => {
     };
   });
   //Create Many Records with model.create()
-  Person.insertMany([
-    {name: "Garry", age: 35, favoriteFoods: ["fried chicken", "chicken wings"]},
-    {name: "hannah", age: 20, favoriteFoods: ["fried chicken", "chicken wings"]},
-    {name: "marie", age: 18, favoriteFoods: ["fried chicken", "chicken wings"]}
-]).then(function(){
-    console.log("Data inserted")  // Success
-}).catch(function(error){
-    console.log(error)      // Failure
-});
+  Person.insertMany([{name: "Garry", age: 35, favoriteFoods: ["fried chicken", "chicken wings"]},
+                     {name: "hannah", age: 20, favoriteFoods: ["fried chicken", "chicken wings"]},
+                     {name: "marie", age: 18, favoriteFoods: ["fried chicken", "chicken wings"]}
+                   ]).then(function(){
+                        console.log("Data inserted") 
+                   }).catch(function(error){
+                        console.log(error)      
+             });
 // model.find() to Search Your Database
 Person.find({ name: 'marie'}, function (err, data) {
     if (err){
@@ -63,7 +62,7 @@ Person.findById(id, function (err, data) {
         console.log("Result : ", data);
     }
 });
-//
+//Perform Classic Updates by Running Find, Edit, then Save
 var personId = '61b7a79d3da34f4159119930';
 Person.findByIdAndUpdate(personId, { favoriteFoods: ['hamburger']},{new: true},
      function (err, data) {
@@ -74,7 +73,7 @@ Person.findByIdAndUpdate(personId, { favoriteFoods: ['hamburger']},{new: true},
         console.log("Updated User : ", data);
     }
 });
-//
+//Perform New Updates on a Document Using model.findOneAndUpdate()
 Person.findOneAndUpdate({name: 'john'}, 
     {age: 20}, {new: true}, function (err, data) {
     if (err){
@@ -84,7 +83,7 @@ Person.findOneAndUpdate({name: 'john'},
         console.log("Original Doc : ",data);
     }
 });
-//
+//Delete One Document Using model.findByIdAndRemove
 
 Person.findByIdAndDelete({name: 'marie'} , function (err, data) {
     if (err){
@@ -94,15 +93,14 @@ Person.findByIdAndDelete({name: 'marie'} , function (err, data) {
         console.log("Removed User : ", data);
     }
 });
-//
+//MongoDB and Mongoose - Delete Many Documents with model.remove()
 
-/*Person.deleteOne({ name:'marie' }).then(function(){
-    console.log("Data deleted"); // Success
-}).catch(function(error){
-    console.log(error); // Failure
-});*/
-//
-Person.find({}, function(err,data){}).sort({name: 'john'}).limit(2);
+Person.deleteOne({ name:'marie' }).then(function(){
+         console.log("Data deleted"); 
+    }).catch(function(error){
+         console.log(error); 
+});
+
 
 
 
